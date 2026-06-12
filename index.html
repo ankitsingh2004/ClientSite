@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,14 +8,14 @@
     />
     <meta
       name="description"
-      content="Classic Residency - Luxury Real Estate in Raj Nagar Extension, Ghaziabad. Premium plots & homes in Delhi NCR. Contact Himalaya Singh."
+      content="Classic Residency - Premium Real Estate in Raj Nagar Extension, Ghaziabad. Prime location plots & homes in Delhi NCR. Contact Himalaya Singh."
     />
     <meta
       name="keywords"
-      content="Property in Raj Nagar Extension, Flats in Ghaziabad, Delhi NCR Real Estate, Luxury Property Ghaziabad, Himalaya Singh"
+      content="Property in Raj Nagar Extension, Flats in Ghaziabad, Delhi NCR Real Estate, Premium Property Ghaziabad, Himalaya Singh"
     />
     <title>
-      Classic Residency | Himalaya Singh - Luxury Real Estate Ghaziabad
+      Classic Residency | Himalaya Singh - Premium Real Estate Ghaziabad
     </title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
@@ -897,7 +897,7 @@
         position: relative;
       }
       .about-img-frame {
-        height: 520px;
+        height: 850px;
         border-radius: 8px;
         overflow: hidden;
         position: relative;
@@ -906,6 +906,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: top center;
       }
       .about-img-overlay {
         position: absolute;
@@ -1291,9 +1292,6 @@
       }
 
       /* ========== GALLERY ========== */
-      .gallery-wrap {
-        position: relative;
-      }
       .gallery-filter {
         display: flex;
         gap: 10px;
@@ -1614,6 +1612,7 @@
         display: flex;
         gap: 10px;
         margin: 24px 0;
+        flex-wrap: wrap;
       }
       .c-social-btn {
         display: inline-flex;
@@ -1626,6 +1625,8 @@
         letter-spacing: 1px;
         text-transform: uppercase;
         transition: var(--transition);
+        cursor: pointer;
+        text-decoration: none;
       }
       .c-social-btn.call {
         background: var(--gold-glow);
@@ -1660,16 +1661,21 @@
         color: var(--white-40);
       }
 
+      /* ========== FORM WRAPPER ========== */
       .form-wrap {
         background: var(--dark-card);
         border: 1px solid var(--glass-border);
         border-radius: 10px;
         padding: 2.5rem;
+        width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
       }
       .form-wrap h3 {
         font-family: var(--font-display);
         font-size: 1.7rem;
         margin-bottom: 4px;
+        color: var(--white);
       }
       .form-sub {
         font-size: 0.78rem;
@@ -1683,6 +1689,7 @@
       }
       .form-group {
         margin-bottom: 14px;
+        width: 100%;
       }
       .form-group label {
         display: block;
@@ -1702,9 +1709,11 @@
         border-radius: 6px;
         padding: 12px 14px;
         color: var(--white);
-        font-size: 0.85rem;
+        font-size: 16px;
         transition: border-color 0.3s;
         outline: none;
+        box-sizing: border-box;
+        -webkit-appearance: none;
       }
       .form-group select {
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23C9A84C' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
@@ -1712,6 +1721,7 @@
         background-position: right 14px center;
         padding-right: 36px;
         cursor: pointer;
+        appearance: none;
       }
       .form-group input:focus,
       .form-group select:focus,
@@ -1758,6 +1768,8 @@
         transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
         text-align: center;
         min-width: 280px;
+        max-width: 90vw;
+        box-sizing: border-box;
       }
       #validationToast.show {
         opacity: 1;
@@ -2225,6 +2237,7 @@
         }
         .form-row {
           grid-template-columns: 1fr;
+          gap: 0;
         }
         .hero-btns {
           flex-direction: column;
@@ -2244,6 +2257,30 @@
         .modal-gallery {
           height: 220px;
         }
+        .about-img-frame {
+          height: 420px;
+        }
+        .form-wrap {
+          padding: 1.5rem;
+        }
+        .c-social {
+          flex-wrap: wrap;
+        }
+        .c-social-btn {
+          padding: 7px 14px;
+          font-size: 0.65rem;
+        }
+        #validationToast {
+          width: calc(100% - 40px);
+          left: 20px;
+          right: 20px;
+          transform: translateY(-20px);
+          padding: 14px 18px;
+        }
+        #validationToast.show {
+          transform: translateY(0);
+          left: 20px;
+        }
       }
       @media (max-width: 480px) {
         .gallery-grid {
@@ -2254,6 +2291,20 @@
         }
         .testi-card {
           padding: 1.8rem 1.2rem;
+        }
+        .form-wrap h3 {
+          font-size: 1.4rem;
+        }
+        .c-item {
+          gap: 10px;
+        }
+        .c-icon {
+          width: 36px;
+          height: 36px;
+          font-size: 0.85rem;
+        }
+        .about-img-frame {
+          height: 320px;
         }
       }
     </style>
@@ -2274,9 +2325,11 @@
           >RESIDENCY</span
         >
       </div>
-      <div class="loader-sub">Raj Nagar Extension · Ghaziabad</div>
+      <div class="loader-sub">
+        Prime location · Raj Nagar Extension · Ghaziabad
+      </div>
       <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
-      <div class="loader-txt">Curating Luxury Living Experiences</div>
+      <div class="loader-txt">Curating Premium Living Experiences</div>
     </div>
 
     <!-- VALIDATION TOAST -->
@@ -2288,7 +2341,7 @@
 
     <!-- FLOATING WHATSAPP -->
     <a
-      href="https://wa.me/918700017691?text=Hello%20Himalaya%20Singh%2C%20I%20am%20interested%20in%20Classic%20Residency%20properties."
+      href="https://wa.me/918700017691?text=Hi%20Himalaya%20Singh%2C%20I%20want%20to%20enquire%20about%20Classic%20Residency."
       class="float-wa"
       target="_blank"
       rel="noopener"
@@ -2313,7 +2366,9 @@
         <i class="fas fa-building nav-logo-icon"></i>
         <div class="nav-logo-text">
           <span class="logo-main">Classic Residency</span>
-          <span class="logo-sub">Raj Nagar Extension · Ghaziabad</span>
+          <span class="logo-sub"
+            >Prime location · Raj Nagar Extension · Ghaziabad</span
+          >
         </div>
       </div>
       <ul class="nav-links">
@@ -2479,10 +2534,10 @@
           </div>
         </div>
         <h1 class="hero-name">Himalaya Singh</h1>
-        <p class="hero-title">Luxury Real Estate Consultant</p>
+        <p class="hero-title">Premium Real Estate Consultant</p>
         <p class="hero-loc">
-          <i class="fas fa-map-marker-alt"></i> Classic Residency, Raj Nagar
-          Extension, Ghaziabad
+          <i class="fas fa-map-marker-alt"></i> Classic Residency · Prime
+          location · Raj Nagar Extension, Ghaziabad
         </p>
         <p class="hero-tagline">
           Your Dream Home Awaits in Delhi NCR's Most Sought-After Destination
@@ -2511,7 +2566,7 @@
           <div class="h-stat-label">Happy Families</div>
         </div>
         <div class="hero-stat">
-          <div class="h-stat-num">12+</div>
+          <div class="h-stat-num">2+</div>
           <div class="h-stat-label">Years Experience</div>
         </div>
         <div class="hero-stat">
@@ -2530,13 +2585,13 @@
     <div class="marquee-wrap">
       <div class="marquee-inner">
         <span>🏆 RERA Approved</span><span>🏠 Premium Plots</span
-        ><span>🚇 Metro Connectivity</span> <span>💰 Bank Loan Support</span
-        ><span>📍 Raj Nagar Extension</span><span>🌟 12+ Years Experience</span>
-        <span>✅ Transparent Pricing</span><span>🔐 Clear Title</span>
+        ><span>🚇 Metro Connectivity</span><span>💰 Bank Loan Support</span
+        ><span>📍 Raj Nagar Extension</span><span>🌟 2+ Years Experience</span
+        ><span>✅ Transparent Pricing</span><span>🔐 Clear Title</span>
         <span>🏆 RERA Approved</span><span>🏠 Premium Plots</span
-        ><span>🚇 Metro Connectivity</span> <span>💰 Bank Loan Support</span
-        ><span>📍 Raj Nagar Extension</span><span>🌟 12+ Years Experience</span>
-        <span>✅ Transparent Pricing</span><span>🔐 Clear Title</span>
+        ><span>🚇 Metro Connectivity</span><span>💰 Bank Loan Support</span
+        ><span>📍 Raj Nagar Extension</span><span>🌟 2+ Years Experience</span
+        ><span>✅ Transparent Pricing</span><span>🔐 Clear Title</span>
       </div>
     </div>
 
@@ -2551,27 +2606,21 @@
         </div>
         <div class="counter-item reveal">
           <div class="counter-num">
-            <span class="ctr" data-target="12">0</span>+
+            <span class="ctr" data-target="2">0</span>+
           </div>
           <div class="counter-label">Years Experience</div>
-        </div>
-        <div class="counter-item reveal">
-          <div class="counter-num">
-            <span class="ctr" data-target="150">0</span>+
-          </div>
-          <div class="counter-label">Projects Delivered</div>
-        </div>
-        <div class="counter-item reveal">
-          <div class="counter-num">
-            <span class="ctr" data-target="8">0</span>
-          </div>
-          <div class="counter-label">Cities Covered</div>
         </div>
         <div class="counter-item reveal">
           <div class="counter-num">
             <span class="ctr" data-target="98">0</span>%
           </div>
           <div class="counter-label">Client Satisfaction</div>
+        </div>
+        <div class="counter-item reveal">
+          <div class="counter-num">
+            <span class="ctr" data-target="8">0</span>
+          </div>
+          <div class="counter-label">Cities Covered</div>
         </div>
       </div>
     </div>
@@ -2592,23 +2641,23 @@
             <div class="about-img-overlay"></div>
           </div>
           <div class="about-badge">
-            <strong>2012</strong><span>Trusted Since</span>
+            <strong>2023</strong><span>Trusted Since</span>
           </div>
         </div>
         <div class="reveal">
           <div class="sec-label">About Us</div>
           <h2 class="sec-title">Welcome to<br /><em>Classic Residency</em></h2>
           <p class="about-lead">
-            Delivering luxury living in the heart of Delhi NCR — Raj Nagar
+            Delivering premium living in the heart of Delhi NCR — Raj Nagar
             Extension, Ghaziabad.
           </p>
           <p class="about-txt">
             Classic Residency is a premier real estate destination offering
             meticulously planned residential properties that combine modern
             architecture with unmatched comfort. Led by
-            <strong>Himalaya Singh</strong>, a seasoned consultant with 12+
-            years of experience, we have helped 500+ families find their dream
-            homes across the Delhi NCR region.
+            <strong>Himalaya Singh</strong>, a seasoned consultant with 2+ years
+            of experience, we have helped 500+ families find their dream homes
+            across the Delhi NCR region.
           </p>
           <p class="about-txt">
             Our properties at Raj Nagar Extension are strategically located with
@@ -2640,7 +2689,7 @@
       </div>
     </section>
 
-    <!-- PROPERTIES SECTION (FIX 1: Updated heading) -->
+    <!-- PROPERTIES SECTION -->
     <section id="properties" class="sec-dark">
       <div class="reveal">
         <div class="sec-label">Our Properties</div>
@@ -2655,7 +2704,7 @@
       <div class="props-grid" id="propsGrid"></div>
     </section>
 
-    <!-- BUDGET SECTION (FIX 2: Updated heading, subtitle, and description) -->
+    <!-- BUDGET SECTION -->
     <section id="budget">
       <div class="reveal" style="text-align: center">
         <div class="sec-label" style="justify-content: center">
@@ -2663,7 +2712,8 @@
         </div>
         <h2 class="sec-title">Choose Your <em>Plot Size</em></h2>
         <p class="sec-desc" style="margin: 0 auto; text-align: center">
-          Premium plots from 100 to 300+ Sq. Yards — prices from ₹50 Lacs to ₹2.5 Cr+ in Raj Nagar Extension.
+          Premium plots from 100 to 300+ Sq. Yards — prices from ₹50 Lacs to
+          ₹2.5 Cr+ in Raj Nagar Extension.
         </p>
       </div>
       <div class="budget-grid" id="budgetGrid"></div>
@@ -2751,7 +2801,8 @@
         </div>
         <h2 class="sec-title">Find Us on <em>the Map</em></h2>
         <p class="sec-desc" style="margin: 0 auto; text-align: center">
-          Classic Residency -  Raj Nagar Extension, Ghaziabad, Uttar Pradesh
+          Classic Residency · Prime location · Raj Nagar Extension, Ghaziabad,
+          Uttar Pradesh
         </p>
       </div>
       <div class="map-wrap reveal">
@@ -2767,7 +2818,7 @@
       </div>
     </section>
 
-    <!-- CONTACT SECTION WITH WORKING FORM -->
+    <!-- CONTACT SECTION -->
     <section id="contact">
       <div class="reveal" style="text-align: center; margin-bottom: 3.5rem">
         <div class="sec-label" style="justify-content: center">
@@ -2779,21 +2830,13 @@
         </p>
       </div>
       <div class="contact-grid">
-        <div class="reveal">
-          <h3
-            style="
-              font-family: var(--font-display);
-              font-size: 1.8rem;
-              margin-bottom: 2rem;
-            "
-          >
-            Contact Information
-          </h3>
+        <div class="reveal contact-info">
+          <h3>Contact Information</h3>
           <div class="c-item">
             <div class="c-icon"><i class="fas fa-user-tie"></i></div>
             <div>
               <strong>Himalaya Singh</strong
-              ><span>Luxury Real Estate Consultant</span>
+              ><span>Premium Real Estate Consultant</span>
             </div>
           </div>
           <div class="c-item">
@@ -2813,7 +2856,10 @@
             <div class="c-icon"><i class="fas fa-map-marker-alt"></i></div>
             <div>
               <strong>Classic Residency</strong
-              ><span>Raj Nagar Extension, Ghaziabad, UP – 201003</span>
+              ><span
+                >Prime location · Raj Nagar Extension, Ghaziabad, UP –
+                201003</span
+              >
             </div>
           </div>
           <div class="c-item">
@@ -2828,7 +2874,7 @@
               ><i class="fas fa-phone"></i> Call Now</a
             >
             <a
-              href="https://wa.me/918700017691"
+              href="https://wa.me/918700017691?text=Hi%20Himalaya%20Singh%2C%20I%20want%20to%20enquire%20about%20Classic%20Residency."
               class="c-social-btn wa"
               target="_blank"
               ><i class="fab fa-whatsapp"></i> WhatsApp</a
@@ -3019,13 +3065,12 @@
             ‹
           </button>
           <button class="modal-gal-btn next" onclick="modalImgNav(1)">›</button>
-          <div class="modal-gal-overlay"></div>
         </div>
         <div class="modal-body" id="modalBody"></div>
       </div>
     </div>
 
-    <!-- FOOTER (FIX 3: Updated Property Types links) -->
+    <!-- FOOTER -->
     <footer>
       <div class="footer-grid">
         <div class="footer-brand">
@@ -3060,7 +3105,7 @@
                   text-transform: uppercase;
                 "
               >
-                Raj Nagar Extension · Ghaziabad
+                Prime location · Raj Nagar Extension · Ghaziabad
               </div>
             </div>
           </div>
@@ -3112,10 +3157,26 @@
         <div class="footer-col">
           <h4>Property Types</h4>
           <ul>
-            <li><a href="#budget" onclick="navTo(event, 'budget')">100–150 Sq. Yard Plots</a></li>
-            <li><a href="#budget" onclick="navTo(event, 'budget')">150–200 Sq. Yard Plots</a></li>
-            <li><a href="#budget" onclick="navTo(event, 'budget')">200–300 Sq. Yard Plots</a></li>
-            <li><a href="#budget" onclick="navTo(event, 'budget')">Above 300 Sq. Yard</a></li>
+            <li>
+              <a href="#budget" onclick="navTo(event, 'budget')"
+                >100–150 Sq. Yard Plots</a
+              >
+            </li>
+            <li>
+              <a href="#budget" onclick="navTo(event, 'budget')"
+                >150–200 Sq. Yard Plots</a
+              >
+            </li>
+            <li>
+              <a href="#budget" onclick="navTo(event, 'budget')"
+                >200–300 Sq. Yard Plots</a
+              >
+            </li>
+            <li>
+              <a href="#budget" onclick="navTo(event, 'budget')"
+                >Above 300 Sq. Yard</a
+              >
+            </li>
             <li>
               <a href="#properties" onclick="navTo(event, 'properties')"
                 >Independent Houses</a
@@ -3151,15 +3212,15 @@
           <div class="footer-c-item">
             <i class="fas fa-map-marker-alt"></i
             ><span
-              >Classic Residency, Raj Nagar Extension, Ghaziabad, UP –
-              201003</span
+              >Classic Residency · Prime location · Raj Nagar Extension,
+              Ghaziabad, UP – 201003</span
             >
           </div>
         </div>
       </div>
       <div class="footer-bottom">
         <p>
-          © 2025 Classic Residency | Himalaya Singh – Luxury Real Estate
+          © 2025 Classic Residency | Himalaya Singh – Premium Real Estate
           Ghaziabad. All Rights Reserved.
         </p>
         <p style="margin-top: 4px">
@@ -3174,168 +3235,168 @@
 
     <script>
       // ============================================
-      // GOOGLE SHEETS SCRIPT URL - YOUR CORRECT URL
+      // GOOGLE SHEETS SCRIPT URL
       // ============================================
       const SHEETS_URL =
         "https://script.google.com/macros/s/AKfycbzgASvaTe3kYqX-syYt_wLSLS_bvMtn43v-o1BUA_Uy2ea9n963Y7pBbNDwqMG0KMnWKQ/exec";
 
       // ============================================
-      // DATA ARRAYS FOR DYNAMIC CONTENT (unchanged)
+      // DATA ARRAYS
       // ============================================
+      const propertiesData = [
+        {
+          name: "The Green Meadows",
+          loc: "Raj Nagar Ext, Sector A",
+          price: "₹50 Lacs – ₹1 Cr",
+          type: "Independent House",
+          badge: "New Launch",
+          badgeClass: "badge-new",
+          beds: "3",
+          baths: "2",
+          area: "900",
+          imgs: [
+            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=900",
+            "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=900",
+          ],
+          amenities: [
+            "🏠 Clear Title",
+            "✅ RERA Approved",
+            "💰 Bank Loan",
+            "🌿 Green Zone",
+          ],
+          desc: "A beautifully designed 3BHK independent house in the heart of Raj Nagar Extension.",
+        },
+        {
+          name: "Classic Signature Villas",
+          loc: "Raj Nagar Ext, Prime Block",
+          price: "₹1 Cr – ₹1.5 Cr",
+          type: "Builder Floor",
+          badge: "Most Popular",
+          badgeClass: "badge-popular",
+          beds: "4",
+          baths: "3",
+          area: "1400",
+          imgs: [
+            "https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=900",
+            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=900",
+          ],
+          amenities: [
+            "🏊 Club Access",
+            "🔐 Gated Community",
+            "🅿️ 2 Parking",
+            "🌟 Premium Interiors",
+          ],
+          desc: "Our flagship builder floor with premium specifications.",
+        },
+        {
+          name: "Elite Residency Plots",
+          loc: "Raj Nagar Ext, Corner Block",
+          price: "₹50 Lacs – ₹1 Cr",
+          type: "Freehold Plot",
+          badge: "Best Value",
+          badgeClass: "badge-gold",
+          beds: "—",
+          baths: "—",
+          area: "150 SY",
+          imgs: [
+            "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=900",
+            "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=900",
+          ],
+          amenities: [
+            "📋 RERA Registered",
+            "🏦 Bank Tied-Up",
+            "📌 Corner Plots",
+            "🛣️ 24m Wide Road",
+          ],
+          desc: "RERA-approved freehold plots in premium locations.",
+        },
+        {
+          name: "The Luxury Tower",
+          loc: "Raj Nagar Ext, Main Boulevard",
+          price: "₹1.5 Cr – ₹2.5 Cr",
+          type: "Luxury Villa",
+          badge: "Elite",
+          badgeClass: "badge-popular",
+          beds: "5",
+          baths: "4",
+          area: "2200",
+          imgs: [
+            "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=900",
+            "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=900",
+          ],
+          amenities: [
+            "🏊 Private Pool",
+            "🎳 Club House",
+            "🚗 4 Parking",
+            "🌺 Landscaped Garden",
+          ],
+          desc: "Ultra-premium luxury villa with designer interiors.",
+        },
+      ];
 
-     const propertiesData = [
-  {
-    name: "The Green Meadows",
-    loc: "Raj Nagar Ext, Sector A",
-    price: "₹50 Lacs – ₹1 Cr",
-    type: "Independent House",
-    badge: "New Launch",
-    badgeClass: "badge-new",
-    beds: "3",
-    baths: "2",
-    area: "900",
-    imgs: [
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=900",
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=900",
-    ],
-    amenities: [
-      "🏠 Clear Title",
-      "✅ RERA Approved",
-      "💰 Bank Loan",
-      "🌿 Green Zone",
-    ],
-    desc: "A beautifully designed 3BHK independent house in the heart of Raj Nagar Extension.",
-  },
-  {
-    name: "Classic Signature Villas",
-    loc: "Raj Nagar Ext, Prime Block",
-    price: "₹1 Cr – ₹1.5 Cr",
-    type: "Builder Floor",
-    badge: "Most Popular",
-    badgeClass: "badge-popular",
-    beds: "4",
-    baths: "3",
-    area: "1400",
-    imgs: [
-      "https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=900",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=900",
-    ],
-    amenities: [
-      "🏊 Club Access",
-      "🔐 Gated Community",
-      "🅿️ 2 Parking",
-      "🌟 Premium Interiors",
-    ],
-    desc: "Our flagship builder floor with premium specifications.",
-  },
-  {
-    name: "Elite Residency Plots",
-    loc: "Raj Nagar Ext, Corner Block",
-    price: "₹50 Lacs – ₹1 Cr",
-    type: "Freehold Plot",
-    badge: "Best Value",
-    badgeClass: "badge-gold",
-    beds: "—",
-    baths: "—",
-    area: "150 SY",
-    imgs: [
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=900",
-      "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=900",
-    ],
-    amenities: [
-      "📋 RERA Registered",
-      "🏦 Bank Tied-Up",
-      "📌 Corner Plots",
-      "🛣️ 24m Wide Road",
-    ],
-    desc: "RERA-approved freehold plots in premium locations.",
-  },
-  {
-    name: "The Luxury Tower",
-    loc: "Raj Nagar Ext, Main Boulevard",
-    price: "₹1.5 Cr – ₹2.5 Cr",
-    type: "Luxury Villa",
-    badge: "Elite",
-    badgeClass: "badge-popular",
-    beds: "5",
-    baths: "4",
-    area: "2200",
-    imgs: [
-      "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=900",
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=900",
-    ],
-    amenities: [
-      "🏊 Private Pool",
-      "🎳 Club House",
-      "🚗 4 Parking",
-      "🌺 Landscaped Garden",
-    ],
-    desc: "Ultra-premium luxury villa with designer interiors.",
-  },
-];
+      const budgetData = [
+        {
+          size: "100 – 150 Sq. Yards",
+          price: "₹50 Lacs – ₹1 Cr",
+          icon: "fa-vector-square",
+          label: "Most Affordable",
+          popular: false,
+          img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=40&w=600",
+          desc: "Ideal starter plots for young families.",
+          feats: [
+            "RERA Approved",
+            "Wide Roads",
+            "Bank Loan Available",
+            "Clear Title",
+          ],
+        },
+        {
+          size: "150 – 200 Sq. Yards",
+          price: "₹1 Cr – ₹1.5 Cr",
+          icon: "fa-home",
+          label: "Most Popular",
+          popular: true,
+          img: "https://images.unsplash.com/photo-1613977257363-707ba9348227?q=40&w=600",
+          desc: "Our best-selling plot size.",
+          feats: [
+            "Prime Location",
+            "Park Facing Available",
+            "Home Loan Support",
+            "Easy Registry",
+          ],
+        },
+        {
+          size: "200 – 300 Sq. Yards",
+          price: "₹1.5 Cr – ₹2.5 Cr",
+          icon: "fa-house-user",
+          label: "Premium",
+          popular: false,
+          img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=40&w=600",
+          desc: "Spacious plots for premium independent houses.",
+          feats: [
+            "Corner Plots Available",
+            "Gated Community",
+            "24/7 Security",
+            "Club House Access",
+          ],
+        },
+        {
+          size: "Above 300 Sq. Yards",
+          price: "₹2.5 Cr+",
+          icon: "fa-landmark",
+          label: "Elite",
+          popular: false,
+          img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=40&w=600",
+          desc: "Ultra-premium plots and villas.",
+          feats: [
+            "Villa Plots",
+            "Private Garden",
+            "Premium Amenities",
+            "High ROI",
+          ],
+        },
+      ];
 
-const budgetData = [
-  {
-    size: "100 – 150 Sq. Yards",
-    price: "₹50 Lacs – ₹1 Cr",
-    icon: "fa-vector-square",
-    label: "Most Affordable",
-    popular: false,
-    img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=40&w=600",
-    desc: "Ideal starter plots for young families.",
-    feats: [
-      "RERA Approved",
-      "Wide Roads",
-      "Bank Loan Available",
-      "Clear Title",
-    ],
-  },
-  {
-    size: "150 – 200 Sq. Yards",
-    price: "₹1 Cr – ₹1.5 Cr",
-    icon: "fa-home",
-    label: "Most Popular",
-    popular: true,
-    img: "https://images.unsplash.com/photo-1613977257363-707ba9348227?q=40&w=600",
-    desc: "Our best-selling plot size.",
-    feats: [
-      "Prime Location",
-      "Park Facing Available",
-      "Home Loan Support",
-      "Easy Registry",
-    ],
-  },
-  {
-    size: "200 – 300 Sq. Yards",
-    price: "₹1.5 Cr – ₹2.5 Cr",
-    icon: "fa-house-user",
-    label: "Premium",
-    popular: false,
-    img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=40&w=600",
-    desc: "Spacious plots for premium independent houses.",
-    feats: [
-      "Corner Plots Available",
-      "Gated Community",
-      "24/7 Security",
-      "Club House Access",
-    ],
-  },
-  {
-    size: "Above 300 Sq. Yards",
-    price: "₹2.5 Cr+",
-    icon: "fa-landmark",
-    label: "Elite",
-    popular: false,
-    img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=40&w=600",
-    desc: "Ultra-premium plots and villas.",
-    feats: [
-      "Villa Plots",
-      "Private Garden",
-      "Premium Amenities",
-      "High ROI",
-    ],
-  },
-];
       const whyData = [
         {
           icon: "fa-shield-alt",
@@ -3481,7 +3542,7 @@ const budgetData = [
       let modalProp = null;
 
       // ============================================
-      // INITIALIZATION
+      // INITIALIZATION  — FIX: removed duplicate initFAQ / initTestiSlider calls
       // ============================================
       window.addEventListener("load", () => {
         setTimeout(
@@ -3494,8 +3555,6 @@ const budgetData = [
         initCursor();
         initCounters();
         initScrollReveal();
-        initTestiSlider();
-        initFAQ();
         initGalleryFilter();
         initForm();
         initPopup();
@@ -3506,8 +3565,8 @@ const budgetData = [
         buildBudget();
         buildWhy();
         buildGallery();
-        buildTestimonials();
-        buildFAQ();
+        buildTestimonials(); // handles both building AND slider init
+        buildFAQ(); // handles both building AND accordion init
       }
 
       // ============================================
@@ -3622,17 +3681,14 @@ const budgetData = [
         let W,
           H,
           particles = [];
-
         function resize() {
           W = canvas.width = window.innerWidth;
           H = canvas.height = window.innerHeight;
         }
         resize();
         window.addEventListener("resize", resize);
-
         const count = window.innerWidth < 768 ? 20 : 50;
         for (let i = 0; i < count; i++) particles.push(mkP(W, H));
-
         function mkP(W, H) {
           return {
             x: Math.random() * W,
@@ -3645,7 +3701,6 @@ const budgetData = [
             maxLife: Math.random() * 200 + 100,
           };
         }
-
         (function loop() {
           ctx.clearRect(0, 0, W, H);
           particles.forEach((p, i) => {
@@ -3725,23 +3780,27 @@ const budgetData = [
           const card = document.createElement("div");
           card.className = "prop-card reveal";
           card.innerHTML = `
-      <div class="prop-img"><div class="prop-img-bg" style="background-image:url('${p.imgs[0]}')"></div><div class="prop-img-overlay"></div><div class="prop-badge ${p.badgeClass}">${p.badge}</div></div>
-      <div class="prop-body">
-        <div class="prop-price">${p.price} <span>onwards</span></div>
-        <div class="prop-name">${p.name}</div>
-        <div class="prop-loc">📍 ${p.loc} · ${p.type}</div>
-        <div class="prop-divider"></div>
-        <div class="prop-specs">
-          <div><div class="prop-spec-val">${p.beds}</div><div class="prop-spec-key">Beds</div></div>
-          <div><div class="prop-spec-val">${p.baths}</div><div class="prop-spec-key">Baths</div></div>
-          <div><div class="prop-spec-val">${p.area}</div><div class="prop-spec-key">Sq Ft/Yd</div></div>
-        </div>
-        <div class="prop-btns">
-          <button class="prop-btn prop-btn-main" onclick="openModal(${i})">View Details</button>
-          <button class="prop-btn prop-btn-sec" onclick="window.open('https://wa.me/918700017691?text=Interested%20in%20${encodeURIComponent(p.name)}','_blank')">WhatsApp</button>
-        </div>
-      </div>
-    `;
+            <div class="prop-img">
+              <div class="prop-img-bg" style="background-image:url('${p.imgs[0]}')"></div>
+              <div class="prop-img-overlay"></div>
+              <div class="prop-badge ${p.badgeClass}">${p.badge}</div>
+            </div>
+            <div class="prop-body">
+              <div class="prop-price">${p.price} <span>onwards</span></div>
+              <div class="prop-name">${p.name}</div>
+              <div class="prop-loc">📍 ${p.loc} · ${p.type}</div>
+              <div class="prop-divider"></div>
+              <div class="prop-specs">
+                <div><div class="prop-spec-val">${p.beds}</div><div class="prop-spec-key">Beds</div></div>
+                <div><div class="prop-spec-val">${p.baths}</div><div class="prop-spec-key">Baths</div></div>
+                <div><div class="prop-spec-val">${p.area}</div><div class="prop-spec-key">Sq Ft/Yd</div></div>
+              </div>
+              <div class="prop-btns">
+                <button class="prop-btn prop-btn-main" onclick="openModal(${i})">View Details</button>
+                <button class="prop-btn prop-btn-sec" onclick="window.open('https://wa.me/918700017691?text=Hi%20Himalaya%20Singh%2C%20I%20want%20to%20enquire%20about%20Classic%20Residency.','_blank')">WhatsApp</button>
+              </div>
+            </div>
+          `;
           card.addEventListener("click", (e) => {
             if (!e.target.closest(".prop-btn")) openModal(i);
           });
@@ -3766,22 +3825,22 @@ const budgetData = [
           gallery.insertBefore(d, gallery.firstChild);
         });
         document.getElementById("modalBody").innerHTML = `
-    <div class="modal-price">${modalProp.price}</div>
-    <div class="modal-title">${modalProp.name}</div>
-    <div class="modal-loc">📍 ${modalProp.loc} · ${modalProp.type}</div>
-    <div class="modal-specs">
-      <div><div class="modal-spec-val">${modalProp.beds}</div><div class="modal-spec-key">Beds</div></div>
-      <div><div class="modal-spec-val">${modalProp.baths}</div><div class="modal-spec-key">Baths</div></div>
-      <div><div class="modal-spec-val">${modalProp.area}</div><div class="modal-spec-key">Area</div></div>
-    </div>
-    <p class="modal-desc">${modalProp.desc}</p>
-    <div class="modal-amenities">${modalProp.amenities.map((a) => `<span class="amenity-chip">${a}</span>`).join("")}</div>
-    <div class="modal-actions">
-      <a href="tel:8700017691" class="btn btn-gold"><i class="fas fa-phone"></i> Call Now</a>
-      <a href="https://wa.me/918700017691?text=Hi%2C%20interested%20in%20${encodeURIComponent(modalProp.name)}" class="btn btn-wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-      <button class="btn btn-outline" onclick="navTo(event,'contact');closeModal(null,true)"><i class="fas fa-calendar-check"></i> Book Visit</button>
-    </div>
-  `;
+          <div class="modal-price">${modalProp.price}</div>
+          <div class="modal-title">${modalProp.name}</div>
+          <div class="modal-loc">📍 ${modalProp.loc} · ${modalProp.type}</div>
+          <div class="modal-specs">
+            <div><div class="modal-spec-val">${modalProp.beds}</div><div class="modal-spec-key">Beds</div></div>
+            <div><div class="modal-spec-val">${modalProp.baths}</div><div class="modal-spec-key">Baths</div></div>
+            <div><div class="modal-spec-val">${modalProp.area}</div><div class="modal-spec-key">Area</div></div>
+          </div>
+          <p class="modal-desc">${modalProp.desc}</p>
+          <div class="modal-amenities">${modalProp.amenities.map((a) => `<span class="amenity-chip">${a}</span>`).join("")}</div>
+          <div class="modal-actions">
+            <a href="tel:8700017691" class="btn btn-gold"><i class="fas fa-phone"></i> Call Now</a>
+            <a href="https://wa.me/918700017691?text=Hi%2C%20interested%20in%20${encodeURIComponent(modalProp.name)}" class="btn btn-wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <button class="btn btn-outline" onclick="navTo(event,'contact');closeModal(null,true)"><i class="fas fa-calendar-check"></i> Book Visit</button>
+          </div>
+        `;
         document.getElementById("modalOverlay").classList.add("open");
         document.body.style.overflow = "hidden";
       }
@@ -3810,16 +3869,21 @@ const budgetData = [
           const card = document.createElement("div");
           card.className = "budget-card reveal" + (b.popular ? " popular" : "");
           card.innerHTML = `
-      ${b.popular ? '<div class="pop-badge">⭐ Most Popular</div>' : ""}
-      <div class="budget-top"><img src="${b.img}" alt="${b.size}" loading="lazy"/><div class="budget-top-overlay"></div><i class="fas ${b.icon} budget-top-icon"></i><div class="budget-label-badge">${b.label}</div></div>
-      <div class="budget-body">
-        <div class="budget-size">${b.size}</div>
-        <div class="budget-price">${b.price}</div>
-        <p class="budget-desc">${b.desc}</p>
-        <ul class="budget-feats">${b.feats.map((f) => `<li><i class="fas fa-check"></i>${f}</li>`).join("")}</ul>
-        <a href="https://wa.me/918700017691?text=I%20am%20interested%20in%20${encodeURIComponent(b.size)}%20plot" class="btn btn-gold btn-full" target="_blank"><i class="fab fa-whatsapp"></i> Enquire Now</a>
-      </div>
-    `;
+            ${b.popular ? '<div class="pop-badge">⭐ Most Popular</div>' : ""}
+            <div class="budget-top">
+              <img src="${b.img}" alt="${b.size}" loading="lazy"/>
+              <div class="budget-top-overlay"></div>
+              <i class="fas ${b.icon} budget-top-icon"></i>
+              <div class="budget-label-badge">${b.label}</div>
+            </div>
+            <div class="budget-body">
+              <div class="budget-size">${b.size}</div>
+              <div class="budget-price">${b.price}</div>
+              <p class="budget-desc">${b.desc}</p>
+              <ul class="budget-feats">${b.feats.map((f) => `<li><i class="fas fa-check"></i>${f}</li>`).join("")}</ul>
+              <a href="https://wa.me/918700017691?text=Hi%20Himalaya%20Singh%2C%20I%20want%20to%20enquire%20about%20Classic%20Residency." class="btn btn-gold btn-full" target="_blank"><i class="fab fa-whatsapp"></i> Enquire Now</a>
+            </div>
+          `;
           g.appendChild(card);
         });
       }
@@ -3834,13 +3898,13 @@ const budgetData = [
           const d = document.createElement("div");
           d.className = "why-card reveal";
           d.innerHTML = `
-      <div class="why-card-bg" style="background-image:url('${w.img}')"></div>
-      <div class="why-card-inner">
-        <div class="why-icon"><i class="fas ${w.icon}"></i></div>
-        <h4>${w.title}</h4>
-        <p>${w.desc}</p>
-      </div>
-    `;
+            <div class="why-card-bg" style="background-image:url('${w.img}')"></div>
+            <div class="why-card-inner">
+              <div class="why-icon"><i class="fas ${w.icon}"></i></div>
+              <h4>${w.title}</h4>
+              <p>${w.desc}</p>
+            </div>
+          `;
           g.appendChild(d);
         });
       }
@@ -3881,7 +3945,7 @@ const budgetData = [
       }
 
       // ============================================
-      // BUILD TESTIMONIALS
+      // BUILD TESTIMONIALS (includes slider init)
       // ============================================
       let curTesti = 0,
         testiTimer;
@@ -3890,29 +3954,26 @@ const budgetData = [
         const track = document.getElementById("testiTrack");
         const dots = document.getElementById("testiDots");
         if (!track || !dots) return;
-
         testiData.forEach((t, i) => {
           const slide = document.createElement("div");
           slide.className = "testi-slide";
           slide.innerHTML = `
-      <div class="testi-card">
-        <div class="testi-stars">${"★".repeat(t.stars)}</div>
-        <p class="testi-text">"${t.text}"</p>
-        <div class="testi-author">
-          <div class="testi-avatar">${t.initials}</div>
-          <strong>${t.author}</strong>
-          <span>${t.role}</span>
-        </div>
-      </div>
-    `;
+            <div class="testi-card">
+              <div class="testi-stars">${"★".repeat(t.stars)}</div>
+              <p class="testi-text">"${t.text}"</p>
+              <div class="testi-author">
+                <div class="testi-avatar">${t.initials}</div>
+                <strong>${t.author}</strong>
+                <span>${t.role}</span>
+              </div>
+            </div>
+          `;
           track.appendChild(slide);
-
           const dot = document.createElement("div");
           dot.className = "testi-dot" + (i === 0 ? " active" : "");
           dot.onclick = () => goTesti(i);
           dots.appendChild(dot);
         });
-
         document.getElementById("testiPrev").onclick = () => {
           stopTesti();
           goTesti((curTesti - 1 + testiData.length) % testiData.length);
@@ -3946,7 +4007,7 @@ const budgetData = [
       }
 
       // ============================================
-      // BUILD FAQ
+      // BUILD FAQ (includes accordion init)
       // ============================================
       function buildFAQ() {
         const list = document.getElementById("faqList");
@@ -3955,9 +4016,9 @@ const budgetData = [
           const item = document.createElement("div");
           item.className = "faq-item reveal";
           item.innerHTML = `
-      <div class="faq-q"><span>${f.q}</span><i class="fas fa-plus"></i></div>
-      <div class="faq-a"><p>${f.a}</p></div>
-    `;
+            <div class="faq-q"><span>${f.q}</span><i class="fas fa-plus"></i></div>
+            <div class="faq-a"><p>${f.a}</p></div>
+          `;
           item.querySelector(".faq-q").addEventListener("click", () => {
             const isOpen = item.classList.contains("open");
             document
@@ -3997,12 +4058,10 @@ const budgetData = [
 
       function submitEnquiryForm() {
         const emptyFields = [];
-
         FORM_FIELDS.forEach(function (f) {
           const el = document.getElementById(f.id);
           const eEl = document.getElementById(f.errId);
           const val = el ? el.value.trim() : "";
-
           if (!val) {
             markFieldError(el, eEl, f.label + " is required");
             emptyFields.push(f.label);
@@ -4075,12 +4134,10 @@ const budgetData = [
         if (el) el.classList.add("err");
         if (eEl) eEl.textContent = msg;
       }
-
       function clearFieldError(el, eEl) {
         if (el) el.classList.remove("err");
         if (eEl) eEl.textContent = "";
       }
-
       function clearAllFieldErrors() {
         FORM_FIELDS.forEach(function (f) {
           clearFieldError(
@@ -4121,19 +4178,17 @@ const budgetData = [
       }
 
       // ============================================
-      // POPUP - FIXED CLOSE BUTTON
+      // POPUP
       // ============================================
       function initPopup() {
         const closeBtn = document.getElementById("popupCloseBtn");
         const overlay = document.getElementById("successPopup");
-
         if (closeBtn) {
           closeBtn.onclick = function () {
             overlay.classList.remove("open");
             document.body.style.overflow = "";
           };
         }
-
         if (overlay) {
           overlay.addEventListener("click", function (e) {
             if (e.target === overlay) {

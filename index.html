@@ -306,22 +306,24 @@
         justify-content: space-between;
         height: var(--nav-h);
         transition: var(--t);
-        gap: 12px;
-        overflow: hidden;
+        gap: 8px;
+        /* NO overflow:hidden — it was clipping hamburger & nav items */
+        width: 100%;
+        box-sizing: border-box;
       }
       nav.scrolled {
         background: rgba(6, 6, 8, 0.97);
         backdrop-filter: blur(20px);
         border-bottom: 1px solid var(--border);
-        height: 60px;
       }
       .nav-logo {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
         min-width: 0;
-        flex-shrink: 0;
+        flex-shrink: 1;
         overflow: hidden;
+        max-width: calc(100% - 60px);
       }
       .nav-logo-icon {
         font-size: 20px;
@@ -331,29 +333,32 @@
       .logo-main {
         display: block;
         font-family: var(--font-d);
-        font-size: 1.1rem;
+        font-size: clamp(0.85rem, 3vw, 1.1rem);
         font-weight: 700;
         letter-spacing: 1px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        max-width: 100%;
       }
       .logo-sub {
         display: block;
-        font-size: 8px;
+        font-size: clamp(6px, 1.5vw, 8px);
         color: var(--gold);
-        letter-spacing: 2.5px;
+        letter-spacing: clamp(1px, 0.5vw, 2.5px);
         text-transform: uppercase;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        max-width: 100%;
       }
       .nav-links {
         display: flex;
         gap: 2px;
         align-items: center;
         flex-wrap: nowrap;
-        overflow: hidden;
+        flex-shrink: 1;
+        min-width: 0;
       }
       .nav-links a {
         padding: 6px 10px;
@@ -409,6 +414,9 @@
         min-height: 44px;
         align-items: center;
         justify-content: center;
+        position: relative;
+        background: transparent;
+        border: none;
       }
       .hamburger span {
         display: block;
@@ -431,38 +439,77 @@
         display: none;
         position: fixed;
         inset: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         background: rgba(6, 6, 8, 0.98);
-        z-index: 999;
+        z-index: 998;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        gap: 1.6rem;
+        /* justify-content:flex-start so all items are visible from top */
+        justify-content: flex-start;
+        gap: 0;
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.4s;
         backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         overflow-y: auto;
         overflow-x: hidden;
-        padding: calc(var(--nav-h) + 20px) 24px 48px;
+        /* padding-top clears the navbar, padding-bottom gives scroll room */
+        padding: calc(var(--nav-h) + 16px) 20px 40px;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        height: 100dvh;
       }
       .mobile-nav.open {
         opacity: 1;
         pointer-events: all;
       }
+      /* divider line between links */
       .mobile-nav a {
         font-family: var(--font-d);
-        font-size: clamp(1.4rem, 5.5vw, 2rem);
+        font-size: clamp(1.1rem, 5vw, 1.6rem);
         color: var(--white);
-        transition: color 0.3s;
+        transition:
+          color 0.3s,
+          background 0.3s;
         text-align: center;
-        min-height: 44px;
+        min-height: 52px;
         display: flex;
         align-items: center;
-        width: 100%;
         justify-content: center;
+        width: 100%;
+        max-width: 340px;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+        padding: 10px 0;
+        letter-spacing: 0.06em;
       }
-      .mobile-nav a:hover {
+      .mobile-nav a:last-child {
+        border-bottom: none;
+      }
+      .mobile-nav a:hover,
+      .mobile-nav a:active {
         color: var(--gold);
+      }
+      /* Gold CTA at bottom of mobile menu */
+      .mobile-nav a[href="#contact"] {
+        margin-top: 14px;
+        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+        color: var(--black) !important;
+        border-radius: 50px;
+        padding: 12px 28px;
+        font-weight: 700;
+        border-bottom: none;
+        min-height: 48px;
+        letter-spacing: 0.08em;
+        width: auto;
+        max-width: 280px;
+      }
+      .mobile-nav a[href="#contact"]:hover {
+        opacity: 0.9;
       }
 
       /* =============================================
@@ -690,23 +737,43 @@
       }
       .slide-dots {
         position: absolute;
-        bottom: clamp(3.5rem, 6vw, 4.5rem);
+        bottom: clamp(2.8rem, 5vw, 4rem);
         left: clamp(16px, 4vw, 60px);
         z-index: 3;
         display: flex;
-        gap: 7px;
+        gap: 8px;
+        align-items: center;
+        padding: 8px 0;
       }
       .slide-dot {
-        width: 20px;
-        height: 2px;
-        background: rgba(201, 168, 76, 0.3);
+        width: 22px;
+        height: 4px;
+        background: rgba(201, 168, 76, 0.45);
         cursor: pointer;
         transition: var(--t);
-        border-radius: 1px;
+        border-radius: 2px;
+        min-width: 22px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        position: relative;
+      }
+      .slide-dot::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        background: rgba(201, 168, 76, 0.45);
+        border-radius: 2px;
+        transition: var(--t);
+      }
+      .slide-dot.active::after {
+        width: 100%;
+        background: var(--gold);
       }
       .slide-dot.active {
-        width: 42px;
-        background: var(--gold);
+        width: 44px;
+        background: transparent;
       }
       .hero-scroll {
         position: absolute;
@@ -856,6 +923,13 @@
         border-radius: 8px !important;
         padding: 15px 20px !important;
         justify-content: center;
+        box-sizing: border-box;
+        white-space: normal; /* allow text to wrap if needed */
+        text-align: center;
+        line-height: 1.4;
+        min-height: 52px;
+        display: flex;
+        align-items: center;
       }
 
       /* =============================================
@@ -1646,20 +1720,38 @@
       }
       .testi-dots {
         display: flex;
-        gap: 6px;
+        gap: 8px;
         align-items: center;
       }
       .testi-dot {
-        width: 6px;
-        height: 6px;
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
-        background: rgba(201, 168, 76, 0.3);
+        background: rgba(201, 168, 76, 0.4);
         cursor: pointer;
         transition: all 0.3s;
+        border: none;
+        font-family: var(--font-b);
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        background: transparent;
       }
-      .testi-dot.active {
+      .testi-dot::after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(201, 168, 76, 0.4);
+        transition: all 0.3s;
+        display: block;
+      }
+      .testi-dot.active::after {
         background: var(--gold);
-        width: 20px;
+        width: 22px;
         border-radius: 3px;
       }
 
@@ -2487,6 +2579,7 @@
           padding: 5px 6px;
           font-size: 0.6rem;
           letter-spacing: 0.7px;
+          white-space: nowrap;
         }
         .about-grid {
           gap: 2.5rem;
@@ -2509,10 +2602,13 @@
       /* ── Tablet portrait / iPad 912px ── */
       @media (max-width: 912px) {
         .nav-links {
-          display: none;
+          display: none !important;
         }
         .hamburger {
-          display: flex;
+          display: flex !important;
+        }
+        .nav-logo {
+          max-width: calc(100% - 56px);
         }
         .mobile-nav {
           display: flex;
@@ -2589,7 +2685,7 @@
           max-width: 320px;
         }
         .slide-dots {
-          bottom: 3rem;
+          bottom: 2.5rem;
         }
 
         /* Grids */
@@ -2910,10 +3006,6 @@
         .form-err {
           font-size: 0.63rem;
         }
-        #submitBtn {
-          font-size: 0.76rem;
-          padding: 13px 14px !important;
-        }
         .form-note {
           font-size: 0.58rem;
         }
@@ -3067,9 +3159,6 @@
         .form-group {
           margin-bottom: 10px;
         }
-        #submitBtn {
-          font-size: 0.73rem;
-        }
         .prop-price {
           font-size: 1.2rem;
         }
@@ -3152,10 +3241,6 @@
         }
         .form-sub {
           margin-bottom: 1rem;
-        }
-        #submitBtn {
-          font-size: 0.7rem;
-          padding: 12px 12px !important;
         }
         .modal-gallery {
           height: 160px;
@@ -3293,10 +3378,6 @@
         .form-err {
           font-size: 0.6rem;
         }
-        #submitBtn {
-          font-size: 0.68rem;
-          padding: 11px 10px !important;
-        }
         .form-note {
           font-size: 0.56rem;
         }
@@ -3316,6 +3397,152 @@
         .budget-grid,
         .props-grid {
           grid-template-columns: 1fr;
+        }
+      }
+
+      /* ── Navbar hamburger guaranteed visible ── */
+      @media (max-width: 912px) {
+        nav {
+          padding: 0 clamp(12px, 3vw, 24px);
+          gap: 6px;
+        }
+        .hamburger {
+          display: flex !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+          position: relative;
+          right: 0;
+          flex-shrink: 0;
+          margin-left: auto;
+        }
+        .nav-links {
+          display: none !important;
+        }
+        .nav-logo {
+          flex-shrink: 1;
+          max-width: calc(100% - 56px);
+        }
+      }
+      @media (max-width: 768px) {
+        nav {
+          padding: 0 clamp(12px, 4vw, 20px);
+        }
+        .hamburger {
+          min-width: 44px;
+          min-height: 44px;
+        }
+      }
+      @media (max-width: 430px) {
+        nav {
+          padding: 0 12px;
+          gap: 4px;
+        }
+        .nav-logo-icon {
+          font-size: 17px;
+        }
+        .hamburger {
+          min-width: 44px;
+          min-height: 44px;
+          padding: 8px;
+        }
+      }
+      @media (max-width: 360px) {
+        nav {
+          padding: 0 10px;
+        }
+        .nav-logo-icon {
+          font-size: 15px;
+        }
+      }
+      @media (max-width: 320px) {
+        nav {
+          padding: 0 8px;
+        }
+        .nav-logo-icon {
+          display: none;
+        }
+        .hamburger {
+          min-width: 40px;
+          min-height: 40px;
+          padding: 7px;
+        }
+      }
+
+      /* ── Dots mobile fixes ── */
+      @media (max-width: 768px) {
+        .slide-dot {
+          width: 18px;
+          min-width: 18px;
+        }
+        .slide-dot::after {
+          width: 18px;
+        }
+        .slide-dot.active {
+          width: 38px;
+        }
+        .slide-dot.active::after {
+          width: 38px;
+        }
+        .testi-dot::after {
+          width: 9px;
+          height: 9px;
+        }
+        .testi-dot.active::after {
+          width: 19px;
+        }
+      }
+      @media (max-width: 430px) {
+        .slide-dots {
+          gap: 6px;
+          bottom: 2.2rem;
+          left: 14px;
+        }
+        .slide-dot {
+          width: 16px;
+          min-width: 16px;
+        }
+        .slide-dot::after {
+          width: 16px;
+        }
+        .slide-dot.active {
+          width: 32px;
+        }
+        .slide-dot.active::after {
+          width: 32px;
+        }
+        .testi-dots {
+          gap: 6px;
+        }
+        .testi-dot::after {
+          width: 8px;
+          height: 8px;
+        }
+        .testi-dot.active::after {
+          width: 18px;
+        }
+        .testi-btn {
+          min-width: 44px;
+          min-height: 44px;
+        }
+      }
+      @media (max-width: 360px) {
+        .slide-dots {
+          bottom: 2rem;
+          left: 12px;
+          gap: 5px;
+        }
+        .slide-dot {
+          width: 14px;
+          min-width: 14px;
+        }
+        .slide-dot::after {
+          width: 14px;
+        }
+        .slide-dot.active {
+          width: 28px;
+        }
+        .slide-dot.active::after {
+          width: 28px;
         }
       }
 
@@ -3454,6 +3681,63 @@
           font-size: 0.65rem;
         }
       }
+
+      /* =============================================
+       SUBMIT BUTTON RESPONSIVE
+    ============================================= */
+      #submitBtn {
+        font-size: clamp(0.72rem, 2.2vw, 0.85rem);
+        letter-spacing: clamp(0.8px, 0.2vw, 1.4px);
+        padding: 15px 16px !important;
+        line-height: 1.4;
+        gap: 6px;
+        white-space: normal;
+        text-align: center;
+        width: 100%;
+        min-height: 52px;
+      }
+      @media (max-width: 768px) {
+        #submitBtn {
+          font-size: 0.8rem;
+          padding: 14px 14px !important;
+          min-height: 50px;
+        }
+      }
+      @media (max-width: 540px) {
+        #submitBtn {
+          font-size: 0.76rem;
+          padding: 13px 12px !important;
+        }
+      }
+      @media (max-width: 430px) {
+        #submitBtn {
+          font-size: 0.73rem;
+          padding: 13px 10px !important;
+          gap: 5px;
+          min-height: 48px;
+        }
+      }
+      @media (max-width: 390px) {
+        #submitBtn {
+          font-size: 0.7rem;
+          padding: 12px 8px !important;
+          letter-spacing: 0.6px;
+        }
+      }
+      @media (max-width: 360px) {
+        #submitBtn {
+          font-size: 0.67rem;
+          padding: 11px 8px !important;
+        }
+      }
+      @media (max-width: 320px) {
+        #submitBtn {
+          font-size: 0.64rem;
+          padding: 10px 6px !important;
+          letter-spacing: 0.5px;
+          gap: 4px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -3484,7 +3768,7 @@
 
     <!-- FLOATING WHATSAPP -->
     <a
-      href="https://wa.me/918700017691?text=Hi%20Himalaya%20Singh%2C%20I%20want%20to%20enquire%20about%20Classic%20Residency."
+      href="https://wa.me/918700017691?text=Hi%20Himalaya%20Singh%2C%20I%20want%20to%20enquire%20about%20Raj%20Nagar%20Extension."
       class="float-wa"
       target="_blank"
       rel="noopener noreferrer"
@@ -3553,6 +3837,16 @@
           navTo(event, 'hero');
           closeMenu();
         "
+        ><i
+          class="fas fa-home"
+          style="
+            font-size: 0.75em;
+            margin-right: 8px;
+            color: var(--gold);
+            opacity: 0.8;
+          "
+          aria-hidden="true"
+        ></i
         >Home</a
       >
       <a
@@ -3561,6 +3855,16 @@
           navTo(event, 'about');
           closeMenu();
         "
+        ><i
+          class="fas fa-user-tie"
+          style="
+            font-size: 0.75em;
+            margin-right: 8px;
+            color: var(--gold);
+            opacity: 0.8;
+          "
+          aria-hidden="true"
+        ></i
         >About</a
       >
       <a
@@ -3569,6 +3873,16 @@
           navTo(event, 'properties');
           closeMenu();
         "
+        ><i
+          class="fas fa-building"
+          style="
+            font-size: 0.75em;
+            margin-right: 8px;
+            color: var(--gold);
+            opacity: 0.8;
+          "
+          aria-hidden="true"
+        ></i
         >Properties</a
       >
       <a
@@ -3577,6 +3891,16 @@
           navTo(event, 'budget');
           closeMenu();
         "
+        ><i
+          class="fas fa-tags"
+          style="
+            font-size: 0.75em;
+            margin-right: 8px;
+            color: var(--gold);
+            opacity: 0.8;
+          "
+          aria-hidden="true"
+        ></i
         >Budget</a
       >
       <a
@@ -3585,6 +3909,16 @@
           navTo(event, 'gallery');
           closeMenu();
         "
+        ><i
+          class="fas fa-images"
+          style="
+            font-size: 0.75em;
+            margin-right: 8px;
+            color: var(--gold);
+            opacity: 0.8;
+          "
+          aria-hidden="true"
+        ></i
         >Gallery</a
       >
       <a
@@ -3593,6 +3927,16 @@
           navTo(event, 'testimonials');
           closeMenu();
         "
+        ><i
+          class="fas fa-star"
+          style="
+            font-size: 0.75em;
+            margin-right: 8px;
+            color: var(--gold);
+            opacity: 0.8;
+          "
+          aria-hidden="true"
+        ></i
         >Reviews</a
       >
       <a
@@ -3601,6 +3945,16 @@
           navTo(event, 'faq');
           closeMenu();
         "
+        ><i
+          class="fas fa-question-circle"
+          style="
+            font-size: 0.75em;
+            margin-right: 8px;
+            color: var(--gold);
+            opacity: 0.8;
+          "
+          aria-hidden="true"
+        ></i
         >FAQ</a
       >
       <a
@@ -3609,7 +3963,12 @@
           navTo(event, 'contact');
           closeMenu();
         "
-        >Contact</a
+        ><i
+          class="fas fa-paper-plane"
+          style="font-size: 0.75em; margin-right: 8px"
+          aria-hidden="true"
+        ></i
+        >Enquire Now</a
       >
     </nav>
 
@@ -3688,7 +4047,7 @@
             ><i class="fas fa-phone" aria-hidden="true"></i> Call Now</a
           >
           <a
-            href="https://wa.me/918700017691?text=Hi%20Himalaya%20Singh%2C%20I%20want%20to%20enquire%20about%20Classic%20Residency."
+            href="https://wa.me/918700017691?text=Hi%20Himalaya%20Singh%2C%20I%20want%20to%20enquire%20about%20Raj%20Nagar%20Extension."
             class="btn btn-wa"
             target="_blank"
             rel="noopener noreferrer"
@@ -3986,7 +4345,7 @@
           <p class="sec-label">Property Gallery</p>
           <h2 class="sec-title">Explore <em>Our Properties</em></h2>
           <p class="sec-desc">
-            A visual tour of Classic Residency, Raj Nagar Extension.
+            A visual tour of our premium properties in Raj Nagar Extension.
           </p>
         </div>
         <div style="margin-top: 2.5rem">
@@ -4156,7 +4515,7 @@
                 ><i class="fas fa-phone" aria-hidden="true"></i> Call Now</a
               >
               <a
-               href="https://wa.me/918700017691?text=Hi%20Himalaya%20Singh%2C%20I%20want%20to%20enquire%20about%20property%20at%20Raj%20nagar%20extension%21%21"
+                href="https://wa.me/918700017691?text=Hi%20Himalaya%20Singh%2C%20I%20want%20to%20enquire%20about%20Raj%20Nagar%20Extension."
                 class="c-social-btn wa"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -4328,7 +4687,7 @@
         </p>
         <div class="popup-actions">
           <a
-            href="https://wa.me/918700017691?text=Hi%20Himalaya%20Singh%2C%20I%20just%20submitted%20an%20enquiry%20for%20Classic%20Residency."
+            href="https://wa.me/918700017691?text=Hi%20Himalaya%20Singh%2C%20I%20just%20submitted%20an%20enquiry%20for%20Raj%20Nagar%20Extension."
             class="btn btn-wa"
             target="_blank"
             rel="noopener noreferrer"
@@ -5181,7 +5540,7 @@
           <div class="budget-price">${b.price}</div>
           <p class="budget-desc">${b.desc}</p>
           <ul class="budget-feats">${b.feats.map((f) => `<li><i class="fas fa-check" aria-hidden="true"></i>${f}</li>`).join("")}</ul>
-          <a href="https://wa.me/918700017691?text=Hi%20Himalaya%20Singh%2C%20I%20want%20to%20enquire%20about%20Classic%20Residency." class="btn btn-gold btn-full" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Enquire Now</a>
+          <a href="https://wa.me/918700017691?text=Hi%20Himalaya%20Singh%2C%20I%20want%20to%20enquire%20about%20Raj%20Nagar%20Extension." class="btn btn-gold btn-full" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Enquire Now</a>
         </div>`;
           g.appendChild(card);
         });
